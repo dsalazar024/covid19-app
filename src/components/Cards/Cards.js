@@ -25,8 +25,9 @@ const Cards = () => {
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards)}>
                 <CardContent>
                     <Typography variant='h5'>
+                        <CountUp start={0} end={dailyData[0].positive + dailyData[0].negative + dailyData[0].pending} duration={2.5} separator="," />
                     </Typography>
-                    <Typography color="textSecondary" gutterBottom >Total Cases</Typography>
+                    <Typography color="textSecondary" gutterBottom >Casos Totales</Typography>
                 </CardContent>
             </Grid>
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards)}>
@@ -34,13 +35,13 @@ const Cards = () => {
                     <Typography variant='h5'>
                         <CountUp start={0} end={dailyData[0].death} duration={2.5} separator="," />
                     </Typography>
-                    <Typography color="textSecondary" gutterBottom >Deceased</Typography>
+                    <Typography color="textSecondary" gutterBottom >Muertes</Typography>
                 </CardContent>
             </Grid>
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards)}>
                 <CardContent>
                     <Typography variant='h5'> { } </Typography>
-                    <Typography color="textSecondary" gutterBottom >Recovered</Typography>
+                    <Typography color="textSecondary" gutterBottom >Hospitalizados</Typography>
                 </CardContent>
             </Grid>
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards, styles.positive)}>
@@ -48,7 +49,7 @@ const Cards = () => {
                     <Typography variant='h5'>
                         <CountUp start={0} end={dailyData[0].positive} duration={2.5} separator="," />
                     </Typography>
-                    <Typography color="textSecondary" gutterBottom >Positive Cases</Typography>
+                    <Typography color="textSecondary" gutterBottom >Casos Positivos</Typography>
                 </CardContent>
             </Grid>
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards, styles.negative)}>
@@ -56,7 +57,7 @@ const Cards = () => {
                     <Typography variant='h5'>
                         <CountUp start={0} end={dailyData[0].negative} duration={2.5} separator="," />
                     </Typography>
-                    <Typography color="textSecondary" gutterBottom >Negative Cases</Typography>
+                    <Typography color="textSecondary" gutterBottom >Casos Negativos</Typography>
                 </CardContent>
             </Grid>
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards, styles.pending)}>
@@ -64,7 +65,7 @@ const Cards = () => {
                     <Typography variant='h5'>
                         <CountUp start={0} end={dailyData[0].pending} duration={2.5} separator="," />
                     </Typography>
-                    <Typography color="textSecondary" gutterBottom >Pending Cases</Typography>
+                    <Typography color="textSecondary" gutterBottom >Casos Pendientes</Typography>
                 </CardContent>
             </Grid>
         </Grid>

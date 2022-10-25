@@ -111,13 +111,13 @@ const Charts = () => {
             <Grid container spacing={1} justifyContent="space-evenly">
                 <Grid component={Card} item xs={12} md={5.5} xl={5.5} >
                     <CardContent>
-                        <Typography variant='h5'> Estadisticas de Casos </Typography>
+                        <Typography variant='h5'> Estadísticas de Casos </Typography>
                         {barChart}
                     </CardContent>
                 </Grid>
                 <Grid component={Card} item xs={12} md={5.5} xl={5.5}>
                     <CardContent>
-                        <Typography variant='h5'> Crecimiento de casos </Typography>
+                        <Typography variant='h5'> Datos Historicos </Typography>
                         {lineChart}
                     </CardContent>
                     <Grid container justifyContent="end" className={cx(styles.date)}>
