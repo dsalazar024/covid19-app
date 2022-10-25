@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Paper, TableContainer, Table, TableHead, TableRow, TableCell, Grid, Card, TableBody } from '@mui/material';
-import { MapContainer } from 'react-leaflet';
 import { currentDataState } from '../../api/Api';
 
 const TableStates = () => {
@@ -57,9 +55,7 @@ const TableStates = () => {
                                                     const value = row[column.id];
                                                     return (
                                                         <TableCell key={column.id} align={column.align}>
-                                                            {column.format && typeof value === 'i'
-                                                                ? column.format(value)
-                                                                : value}
+                                                            {value}
                                                         </TableCell>
                                                     );
                                                 })}

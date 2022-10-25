@@ -2,7 +2,6 @@ import React from 'react';
 import Cards from './components/Cards/Cards';
 import TableStates from './components/States/TableStates';
 import styles from './App.module.css';
-import Map from './components/Map/Map';
 import { currentData } from './api/Api';
 import Charts from './components/Chart/Chart';
 
@@ -21,7 +20,7 @@ class App extends React.Component {
 
     render() {
 
-        const { data, country } = this.state;
+        const { data } = this.state;
         return (
             <div container >
                 <div>
