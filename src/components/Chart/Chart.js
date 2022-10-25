@@ -80,7 +80,7 @@ const Charts = () => {
         historicalData[0] ? (
             <Line
                 data={{
-                    labels: historicalData.map(({ date }) => new Date(date).toLocaleDateString()),
+                    labels: historicalData.map(({ dateChecked }) => new Date(dateChecked).toLocaleDateString()),
                     datasets: [
                         {
                             data: historicalData.map((data) => data.positive),
@@ -107,7 +107,6 @@ const Charts = () => {
     );
 
     return (
-
         <div>
             <Grid container spacing={1} justifyContent="space-evenly">
                 <Grid component={Card} item xs={12} md={5.5} xl={5.5} >
