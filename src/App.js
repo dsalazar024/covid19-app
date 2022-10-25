@@ -3,7 +3,7 @@ import Cards from './components/Cards/Cards';
 import TableStates from './components/States/TableStates';
 import styles from './App.module.css';
 import Map from './components/Map/Map';
-import { fetchCurrentData } from './api/Api';
+import { currentData } from './api/Api';
 import Charts from './components/Chart/Chart';
 
 class App extends React.Component {
@@ -13,7 +13,7 @@ class App extends React.Component {
     }
 
     async componentDidMount() {
-        const data = await fetchCurrentData();
+        const data = await currentData();
 
         this.setState({ data });
     }

@@ -1,42 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Paper, TableContainer, Table, TableHead, TableRow, TableCell, Grid, Card, TableBody } from '@mui/material';
-// import Map from '../Map/Map';
 import { MapContainer } from 'react-leaflet';
+import { currentDataState } from '../../api/Api';
 
 const TableStates = () => {
 
-    let [tableData, setData] = useState([]);
+    const [currentDataStates, setCurrentDataStates] = useState([]);
+
+    useEffect(() => {
+        const fetchMyAPI = async () => {
+            const initialDailyData = await currentDataState();
+
+            setCurrentDataStates(initialDailyData);
+        };
+
+        fetchMyAPI();
+    }, []);
 
     const columns = [
         { id: 'state', label: 'Nombre', minWidth: 150 },
-        { id: 'total', label: 'Casos Totales', minWidth: 100 },
-        { id: 'death', label: 'Muertes', minWidth: 100 }
+        { id: 'total', label: 'Casos Totales', minWidth: 50 },
+        { id: 'death', label: 'Muertes', minWidth: 50 }, 
+        { id: 'positive', label: 'Positivos', minWidth: 50 }, 
+
     ];
-
-    function createData(name, code, population, size) {
-        const density = population / size;
-        return { name, code, population, size, density };
-    }
-
-    useEffect(() => {
-        const loadDataStates = async () => {
-            setData(await loadCurrentDataStates());
-        }
-
-        loadDataStates();
-    }, []);
-
-    const loadCurrentDataStates = async () => {
-        try {
-            const currentData = await axios.get('https://api.covidtracking.com/v1/states/current.json');
-            tableData = currentData.data;
-
-            return tableData;
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     return (
         <div>
@@ -61,7 +49,7 @@ const TableStates = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {tableData
+                                {currentDataStates
                                     .map((row, i) => {
                                         return (
                                             <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>

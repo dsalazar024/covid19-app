@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchCurrentData } from '../../api/Api';
+import { currentData } from '../../api/Api';
 import { historicalDatas } from '../../api/Api';
 import { Line, Bar } from 'react-chartjs-2';
 import { CategoryScale } from 'chart.js';
@@ -26,7 +26,7 @@ const Charts = () => {
 
     useEffect(() => {
         const fetchMyAPI = async () => {
-            const initialDailyData = await fetchCurrentData();
+            const initialDailyData = await currentData();
 
             setDailyData(initialDailyData);
         };
