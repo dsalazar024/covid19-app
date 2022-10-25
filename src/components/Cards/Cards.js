@@ -26,7 +26,7 @@ const Cards = () => {
         return total;
     }
 
-    const newRecovered = listCurrentData[0].recovered == null ? "Sin Informacion" : listCurrentData[0].recovered;
+    // const newRecovered = listCurrentData[0].recovered == null ? "Sin Informacion" : listCurrentData[0].recovered;
 
     return (
         <div className={styles.container}>
@@ -49,7 +49,7 @@ const Cards = () => {
                 </Grid>
                 <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards)}>
                     <CardContent>
-                        <Typography variant='h5'> {newRecovered} </Typography>
+                        <Typography variant='h5'> {} </Typography>
                         <Typography color="textSecondary" gutterBottom >Recovered</Typography>
                     </CardContent>
                 </Grid>
