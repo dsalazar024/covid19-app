@@ -6,7 +6,7 @@ const currentStatesUrl = 'https://api.covidtracking.com/v1/states/current.json';
 
 export const currentData = async () => {
     try {
-        const {data} = await axios.get(currentUrl);
+        const { data } = await axios.get(currentUrl);
 
         return data;
     } catch (error) {
@@ -16,7 +16,7 @@ export const currentData = async () => {
 
 export const currentDataState = async () => {
     try {
-        const {data} = await axios.get(currentStatesUrl);
+        const { data } = await axios.get(currentStatesUrl);
 
         return data;
     } catch (error) {
@@ -26,7 +26,7 @@ export const currentDataState = async () => {
 
 export const historicalDatas = async () => {
     try {
-        const {data} = await axios.get(historicalUrl);
+        const { data } = await axios.get(historicalUrl);
 
         return data;
     } catch (error) {

@@ -28,6 +28,9 @@ const Cards = () => {
 
     // const newRecovered = listCurrentData[0].recovered == null ? "Sin Informacion" : listCurrentData[0].recovered;
 
+
+    console.log(listCurrentData);
+
     return (
         <div className={styles.container}>
             <Grid container spacing={2} justifyContent="center">
