@@ -19,6 +19,8 @@ const DateInforData = ({ handleDateChange }) => {
         fetchDateData();
     }, [setfechedDateData]);
 
+    console.log(fetchedDateData);
+
     const [value, setValue] = React.useState(dayjs('2020-01-01T21:11:54'));
 
     const handleChange = (newValue) => {

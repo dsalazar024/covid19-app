@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { currentData } from '../../api/Api';
 import { historicalDatas } from '../../api/Api';
 import { Line, Bar } from 'react-chartjs-2';
 import { CategoryScale } from 'chart.js';
@@ -7,24 +6,23 @@ import Chart from 'chart.js/auto';
 import { Grid, Card, CardContent, Typography } from '@mui/material';
 import styles from './Chart.css';
 import cx from 'classname';
-import DateInforData from '../DatePicker/DatePicker';
 
 
-const Charts = () => {
+const Charts = ({ data }) => {
     Chart.register(CategoryScale);
 
-    const [dailyData, setDailyData] = useState({});
+    // const [dailyData, setDailyData] = useState({});
     const [historicalData, setHistoricalData] = useState({});
 
-    useEffect(() => {
-        const fetchMyAPI = async () => {
-            const initialDailyData = await currentData();
+    // useEffect(() => {
+    //     const fetchMyAPI = async () => {
+    //         const initialDailyData = await currentData();
 
-            setDailyData(initialDailyData);
-        };
+    //         setDailyData(initialDailyData);
+    //     };
 
-        fetchMyAPI();
-    }, []);
+    //     fetchMyAPI();
+    // }, []);
 
     useEffect(() => {
         const fetchHistoricalData = async () => {
@@ -36,8 +34,11 @@ const Charts = () => {
         fetchHistoricalData();
     }, []);
 
+    console.log('chardata', data);
+    // console.log('chardata22222', dailyData);
+
     const barChart = (
-        dailyData[0] ? (
+        data[0] ? (
             <Bar
                 data={{
                     labels: ['Personas'],
@@ -45,17 +46,17 @@ const Charts = () => {
                         {
                             label: ['Positive'],
                             backgroundColor: ['rgba(0, 255, 0, 0.5)'],
-                            data: [dailyData[0].positive, dailyData[0].negative, dailyData[0].death],
+                            data: [data[0].positive, data[0].negative, data[0].death],
                         },
                         {
                             label: ['Negativos'],
                             backgroundColor: ['rgba(0, 0, 255, 0.5)'],
-                            data: [dailyData[0].negative],
+                            data: [data[0].negative],
                         },
                         {
                             label: ['Muertes'],
                             backgroundColor: ['rgba(255, 0, 0, 0.5)'],
-                            data: [dailyData[0].death],
+                            data: [data[0].death],
                         },
                     ],
                 }}
@@ -114,7 +115,7 @@ const Charts = () => {
                     </CardContent>
                     <CardContent>
                         <Grid container justifyContent="end" className={cx(styles.date)}>
-                            
+
                         </Grid>
                     </CardContent>
                 </Grid>

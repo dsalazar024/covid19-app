@@ -16,13 +16,13 @@ class App extends React.Component {
     async componentDidMount() {
         const data = await dataPerMonth();
 
-        this.setState({data: data});
+        this.setState({ data: data });
     }
 
     handleDateChange = async (date) => {
         const fetchedData = await dataPerMonth(date);
 
-        this.setState({data: [fetchedData], date: date});
+        this.setState({ data: [fetchedData], date: date });
     }
 
     render() {
@@ -31,7 +31,7 @@ class App extends React.Component {
             <div container >
                 <div>
                     <h1>Covid Tracker - Estados Unidos</h1>
-                    <Cards data={data}/>
+                    <Cards data={data} />
                 </div>
                 <div>
                     <DateInforData handleDateChange={this.handleDateChange} />
@@ -40,7 +40,7 @@ class App extends React.Component {
                     <TableStates />
                 </div>
                 <div className={styles.containerChart} >
-                    <Charts />
+                    <Charts data={data} />
                 </div>
             </div>)
     }
