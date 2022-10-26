@@ -4,13 +4,10 @@ import { historicalDatas } from '../../api/Api';
 import { Line, Bar } from 'react-chartjs-2';
 import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
-import { Grid, Card, CardContent, Typography, TextField } from '@mui/material';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
+import { Grid, Card, CardContent, Typography } from '@mui/material';
 import styles from './Chart.css';
 import cx from 'classname';
+import DateInforData from '../DatePicker/DatePicker';
 
 
 const Charts = () => {
@@ -18,11 +15,6 @@ const Charts = () => {
 
     const [dailyData, setDailyData] = useState({});
     const [historicalData, setHistoricalData] = useState({});
-    const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
-
-    const handleChange = (newValue) => {
-        setValue(newValue);
-    };
 
     useEffect(() => {
         const fetchMyAPI = async () => {
@@ -120,17 +112,11 @@ const Charts = () => {
                         <Typography variant='h5'> Datos Historicos </Typography>
                         {lineChart}
                     </CardContent>
-                    <Grid container justifyContent="end" className={cx(styles.date)}>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DesktopDatePicker
-                                label="Buscar por Fecha"
-                                inputFormat="MM/DD/YYYY"
-                                value={value}
-                                onChange={handleChange}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </LocalizationProvider>
-                    </Grid>
+                    <CardContent>
+                        <Grid container justifyContent="end" className={cx(styles.date)}>
+                            
+                        </Grid>
+                    </CardContent>
                 </Grid>
             </Grid>
         </div>

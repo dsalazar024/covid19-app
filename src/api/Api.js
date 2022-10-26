@@ -3,6 +3,7 @@ import axios from "axios";
 const currentUrl = 'https://api.covidtracking.com/v1/us/current.json';
 const historicalUrl = 'https://api.covidtracking.com/v1/us/daily.json';
 const currentStatesUrl = 'https://api.covidtracking.com/v1/states/current.json';
+const dateDataUrl = 'https://api.covidtracking.com/v1/us';
 
 export const currentData = async () => {
     try {
@@ -28,6 +29,21 @@ export const historicalDatas = async () => {
     try {
         const { data } = await axios.get(historicalUrl);
 
+        return data;
+    } catch (error) {
+
+    }
+}
+
+export const dataPerMonth = async (date) => {
+    let changeUrl = currentUrl;
+
+    if (date) {
+        changeUrl = `${dateDataUrl}/${date}.json`;
+    }
+
+    try {
+        const { data } = await axios.get(`${changeUrl}`);
         return data;
     } catch (error) {
 

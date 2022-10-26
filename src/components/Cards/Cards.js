@@ -1,31 +1,17 @@
-import React, { useEffect, useState } from 'react';
-
+import React from 'react';
 import styles from './Cards.module.css';
 import { Card, CardContent, Typography, Grid } from '@mui/material';
-import { currentData } from '../../api/Api';
 import CountUp from 'react-countup';
 import cx from 'classname';
 
-const Cards = () => {
+const Cards = ({ data }) => {
 
-    const [dailyData, setDailyData] = useState({});
-
-    useEffect(() => {
-        const fetchMyAPI = async () => {
-            const initialDailyData = await currentData();
-
-            setDailyData(initialDailyData);
-        };
-
-        fetchMyAPI();
-    }, []);
-
-    const cardData = (dailyData[0] ? (
+    const cardData = (data[0] ? (
         <Grid container spacing={2} justifyContent="center">
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards)}>
                 <CardContent>
                     <Typography variant='h5'>
-                        <CountUp start={0} end={dailyData[0].positive + dailyData[0].negative + dailyData[0].pending} duration={2.5} separator="," />
+                        <CountUp start={0} end={data[0].positive + data[0].negative + data[0].pending} duration={1.5} separator="," />
                     </Typography>
                     <Typography color="textSecondary" gutterBottom >Casos Totales</Typography>
                 </CardContent>
@@ -33,21 +19,23 @@ const Cards = () => {
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards)}>
                 <CardContent>
                     <Typography variant='h5'>
-                        <CountUp start={0} end={dailyData[0].death} duration={2.5} separator="," />
+                        <CountUp start={0} end={data[0].death} duration={1.5} separator="," />
                     </Typography>
                     <Typography color="textSecondary" gutterBottom >Muertes</Typography>
                 </CardContent>
             </Grid>
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards)}>
                 <CardContent>
-                    <Typography variant='h5'> { } </Typography>
+                    <Typography variant='h5'>
+                        <CountUp start={0} end={data[0].hospitalizedCurrently} duration={1.5} separator="," />
+                    </Typography>
                     <Typography color="textSecondary" gutterBottom >Hospitalizados</Typography>
                 </CardContent>
             </Grid>
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards, styles.positive)}>
                 <CardContent>
                     <Typography variant='h5'>
-                        <CountUp start={0} end={dailyData[0].positive} duration={2.5} separator="," />
+                        <CountUp start={0} end={data[0].positive} duration={1.5} separator="," />
                     </Typography>
                     <Typography color="textSecondary" gutterBottom >Casos Positivos</Typography>
                 </CardContent>
@@ -55,7 +43,7 @@ const Cards = () => {
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards, styles.negative)}>
                 <CardContent>
                     <Typography variant='h5'>
-                        <CountUp start={0} end={dailyData[0].negative} duration={2.5} separator="," />
+                        <CountUp start={0} end={data[0].negative} duration={1.5} separator="," />
                     </Typography>
                     <Typography color="textSecondary" gutterBottom >Casos Negativos</Typography>
                 </CardContent>
@@ -63,14 +51,12 @@ const Cards = () => {
             <Grid item component={Card} xs={12} md={3} xl={3} className={cx(styles.cards, styles.pending)}>
                 <CardContent>
                     <Typography variant='h5'>
-                        <CountUp start={0} end={dailyData[0].pending} duration={2.5} separator="," />
+                        <CountUp start={0} end={data[0].pending} duration={1.5} separator="," />
                     </Typography>
                     <Typography color="textSecondary" gutterBottom >Casos Pendientes</Typography>
                 </CardContent>
             </Grid>
         </Grid>
-
-
     ) : null);
 
     return (

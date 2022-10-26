@@ -1,9 +1,16 @@
 body {
   background-color: aliceblue;
+  margin: 2%;
 }
 
 .containerChart {
   margin-top: 2%;
+}
+
+.containerMap {
+  margin-top: 2%;
+  width: 500px;
+  height: 500px;
 }
 
 @media only screen and (max-width: 770px) {
