@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Paper, TableContainer, Table, TableHead, TableRow, TableCell, Grid, Card, TableBody, Typography } from '@mui/material';
 import { currentDataState } from '../../api/Api';
+import map from '../../assets/map.png';
 
 const TableStates = () => {
 
@@ -28,7 +29,7 @@ const TableStates = () => {
         <div>
             <Grid container spacing={2} justifyContent="space-evenly">
                 <Grid component={Card} item xs={12} md={5.5} xl={5.5} >
-
+                    <img src={map} style={{width: '100%'}} />
                 </Grid>
                 <Grid item component={Paper} xs={12} md={5.5} xl={5.5}>
                     <Typography variant='h5'> Listo de estados </Typography>
